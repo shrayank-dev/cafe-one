@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BREW & BLOOM — Specialty Coffee & Brunch in Koramangala</title>
+<meta name="description" content="Brew & Bloom is a specialty coffee shop and brunch cafe in Koramangala, Bangalore. Single-origin beans, fresh bakes, slow mornings.">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF6F0;--bg-2:#FFFFFF;--bg-3:#F0E9DC;
+  --text:#1F1B16;--text-dim:#6B6258;
+  --accent:#5C7A4A;--accent-2:#C8956D;
+  --border:#E8DFCE;--max:1240px;
+  --font-head:'Fraunces','Georgia',serif;
+  --font-body:'Inter',system-ui,-apple-system,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.container{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(250,246,240,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.logo{font-family:var(--font-head);font-size:24px;font-weight:600;letter-spacing:-.02em}
+.logo em{font-style:italic;color:var(--accent);font-weight:400}
+.nav-menu{display:flex;gap:36px;align-items:center}
+.nav-menu a{font-size:14px;font-weight:500;color:var(--text-dim);transition:color .2s}
+.nav-menu a:hover{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;font-weight:500;font-size:14px;border-radius:999px;transition:all .2s;cursor:pointer;border:none;font-family:inherit}
+.btn-primary{background:var(--text);color:var(--bg)}
+.btn-primary:hover{background:var(--accent);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--text)}
+.btn-outline:hover{background:var(--text);color:var(--bg)}
+.menu-toggle{display:none;background:none;border:none;color:var(--text);font-size:24px;cursor:pointer}
+
+/* HERO */
+.hero{position:relative;padding:80px 0 100px;background:linear-gradient(180deg,var(--bg-3) 0%,var(--bg) 100%)}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-eyebrow{font-size:12px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.2em;margin-bottom:20px;display:inline-block}
+.hero h1{font-family:var(--font-head);font-size:clamp(48px,6vw,80px);font-weight:500;line-height:1.05;letter-spacing:-.03em;margin-bottom:24px}
+.hero h1 em{font-style:italic;color:var(--accent);font-weight:400}
+.hero p{font-size:18px;color:var(--text-dim);max-width:480px;margin-bottom:36px;line-height:1.7}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.hero-visual{position:relative;aspect-ratio:4/5;border-radius:24px;overflow:hidden;background:linear-gradient(135deg,#C8956D 0%,#5C7A4A 100%);box-shadow:0 30px 60px -20px rgba(31,27,22,.2)}
+.hero-visual::after{content:"☕";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:120px;opacity:.9}
+.hero-badge{position:absolute;top:24px;left:24px;background:rgba(250,246,240,.95);padding:10px 18px;border-radius:999px;font-size:13px;font-weight:600;backdrop-filter:blur(8px)}
+
+/* SECTION */
+section{padding:100px 0}
+.section-head{text-align:center;max-width:640px;margin:0 auto 64px}
+.section-eyebrow{font-size:12px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.2em;margin-bottom:14px;display:block}
+.section-head h2{font-family:var(--font-head);font-size:clamp(36px,5vw,52px);font-weight:500;line-height:1.1;letter-spacing:-.02em;margin-bottom:18px}
+.section-head h2 em{font-style:italic;color:var(--accent)}
+.section-head p{font-size:17px;color:var(--text-dim)}
+
+/* MENU */
+.menu-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:48px;flex-wrap:wrap}
+.menu-tab{padding:10px 20px;background:transparent;border:1px solid var(--border);border-radius:999px;font-size:14px;font-weight:500;cursor:pointer;font-family:inherit;transition:all .2s}
+.menu-tab.active,.menu-tab:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
+.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px 60px;max-width:900px;margin:0 auto}
+.menu-item{padding-bottom:24px;border-bottom:1px dashed var(--border);display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+.menu-item-info h4{font-family:var(--font-head);font-size:20px;font-weight:600;margin-bottom:4px;letter-spacing:-.01em}
+.menu-item-info p{font-size:14px;color:var(--text-dim);line-height:1.5}
+.menu-item-price{font-family:var(--font-head);font-size:18px;font-weight:600;color:var(--accent);white-space:nowrap}
+
+/* STORY */
+.story{background:var(--bg-3)}
+.story-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center}
+.story-visual{aspect-ratio:1/1;border-radius:24px;background:linear-gradient(135deg,#5C7A4A 0%,#C8956D 100%);position:relative;overflow:hidden}
+.story-visual::after{content:"🌿";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:100px}
+.story h2{font-family:var(--font-head);font-size:clamp(36px,4.5vw,48px);font-weight:500;line-height:1.15;letter-spacing:-.02em;margin-bottom:24px}
+.story h2 em{font-style:italic;color:var(--accent)}
+.story p{font-size:16px;color:var(--text-dim);margin-bottom:20px;line-height:1.75}
+.story-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;padding-top:40px;border-top:1px solid var(--border)}
+.story-stat strong{font-family:var(--font-head);font-size:36px;font-weight:600;color:var(--accent);display:block;line-height:1}
+.story-stat span{font-size:13px;color:var(--text-dim);margin-top:6px;display:block}
+
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,200px);gap:16px}
+.gallery-item{border-radius:16px;overflow:hidden;background:linear-gradient(135deg,var(--bg-3),var(--bg-2));position:relative}
+.gallery-item:nth-child(1){background:linear-gradient(135deg,#C8956D,#8B5A3C);grid-row:span 2}
+.gallery-item:nth-child(2){background:linear-gradient(135deg,#5C7A4A,#3F5532)}
+.gallery-item:nth-child(3){background:linear-gradient(135deg,#D4B896,#A8845C)}
+.gallery-item:nth-child(4){background:linear-gradient(135deg,#8FA876,#5C7A4A)}
+.gallery-item:nth-child(5){background:linear-gradient(135deg,#C8956D,#A8845C);grid-column:span 2}
+.gallery-item::after{content:attr(data-label);position:absolute;bottom:16px;left:16px;color:#fff;font-size:13px;font-weight:500;text-shadow:0 1px 3px rgba(0,0,0,.3)}
+
+/* VISIT */
+.visit{background:var(--text);color:var(--bg);border-radius:32px;margin:0 24px;padding:80px 60px}
+.visit-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.visit h2{font-family:var(--font-head);font-size:clamp(36px,4.5vw,52px);font-weight:500;line-height:1.1;letter-spacing:-.02em;margin-bottom:24px}
+.visit h2 em{font-style:italic;color:var(--accent-2)}
+.visit-detail{margin-bottom:24px}
+.visit-detail strong{display:block;font-size:12px;font-weight:600;color:var(--accent-2);text-transform:uppercase;letter-spacing:.2em;margin-bottom:8px}
+.visit-detail span{font-size:17px;line-height:1.6}
+
+/* FOOTER */
+footer{padding:60px 0 30px;border-top:1px solid var(--border);margin-top:0}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand p{color:var(--text-dim);font-size:14px;margin-top:16px;max-width:280px;line-height:1.6}
+.footer-col h5{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.15em;margin-bottom:18px;font-family:var(--font-head)}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:10px}
+.footer-col a{color:var(--text-dim);font-size:14px;transition:color .2s}
+.footer-col a:hover{color:var(--accent)}
+.footer-bottom{padding-top:30px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--text-dim)}
+.socials{display:flex;gap:12px}
+.socials a{width:36px;height:36px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:13px;font-weight:600;transition:all .2s}
+.socials a:hover{border-color:var(--accent);color:var(--accent)}
+
+@media(max-width:968px){
+  .hero-inner,.story-inner,.visit-inner{grid-template-columns:1fr;gap:50px}
+  .menu-grid{grid-template-columns:1fr;gap:24px}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,160px)}
+  .gallery-item:nth-child(1){grid-row:span 1}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .visit{margin:0 16px;padding:50px 30px;border-radius:24px}
+}
+@media(max-width:640px){
+  .nav-menu{display:none;position:fixed;top:70px;left:0;right:0;background:var(--bg-2);flex-direction:column;padding:24px;gap:20px;border-bottom:1px solid var(--border)}
+  .nav-menu.open{display:flex}
+  .menu-toggle{display:block}
+  .gallery-grid{grid-template-columns:1fr;grid-template-rows:auto}
+  .gallery-item{height:200px}
+  .gallery-item:nth-child(5){grid-column:span 1}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:16px;text-align:center}
+  section{padding:60px 0}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo">brew<em> & </em>bloom</a>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="#visit" class="btn btn-primary">Reserve a Table</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-inner">
+    <div>
+      <span class="hero-eyebrow">☕ Specialty Coffee & Brunch · Koramangala</span>
+      <h1>Slow mornings, <em>better coffee.</em></h1>
+      <p>Single-origin beans roasted in small batches. Brunch made from scratch every morning. A neighborhood spot built for lingering.</p>
+      <div class="hero-ctas">
+        <a href="#menu" class="btn btn-primary">View Menu →</a>
+        <a href="#visit" class="btn btn-outline">Find Us</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-badge">★ 4.8 · 1.2k reviews</div>
+    </div>
+  </div>
+</header>
+
+<section id="menu">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">The Menu</span>
+      <h2>Coffee, brunch, and <em>everything in between.</em></h2>
+      <p>Seasonal ingredients, sourced locally. Menu changes with what's freshest.</p>
+    </div>
+    <div class="menu-tabs">
+      <button class="menu-tab active">Coffee</button>
+      <button class="menu-tab">Brunch</button>
+      <button class="menu-tab">Bakes</button>
+      <button class="menu-tab">All Day</button>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h4>Single Origin Pour Over</h4>
+          <p>Today's roast · Ask your barista for the story</p>
+        </div>
+        <div class="menu-item-price">₹280</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h4>Flat White</h4>
+          <p>Double ristretto, steamed oat milk</p>
+        </div>
+        <div class="menu-item-price">₹240</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h4>Cortado</h4>
+          <p>Equal parts espresso and warm milk</p>
+        </div>
+        <div class="menu-item-price">₹220</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h4>Cold Brew Tonic</h4>
+          <p>12-hour cold brew, premium tonic, citrus</p>
+        </div>
+        <div class="menu-item-price">₹320</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h4>Matcha Latte</h4>
+          <p>Ceremonial grade matcha, your choice of milk</p>
+        </div>
+        <div class="menu-item-price">₹290</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h4>Bloom Cold Press</h4>
+          <p>House blend · Beets, apple, ginger, lemon</p>
+        </div>
+        <div class="menu-item-price">₹260</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="container story-inner">
+    <div class="story-visual"></div>
+    <div>
+      <h2>Built around the idea that <em>coffee is a craft.</em></h2>
+      <p>Brew & Bloom started in 2019 in a 200-square-foot corner of Koramangala. We wanted a place that took coffee seriously, but didn't take itself too seriously.</p>
+      <p>Today we work directly with three farms in Chikmagalur and Coorg, roast our beans in-house every Wednesday, and bake everything from scratch each morning before opening.</p>
+      <p>We're not trying to be the biggest. We're trying to be your favorite.</p>
+      <div class="story-stats">
+        <div class="story-stat"><strong>3</strong><span>Partner farms</span></div>
+        <div class="story-stat"><strong>2019</strong><span>Founded</span></div>
+        <div class="story-stat"><strong>1.2k</strong><span>Happy regulars</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Gallery</span>
+      <h2>Come <em>hang out.</em></h2>
+      <p>A few snapshots from the shop. Pull up a chair anytime.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item" data-label="The Bar"></div>
+      <div class="gallery-item" data-label="Morning Light"></div>
+      <div class="gallery-item" data-label="Brunch Plate"></div>
+      <div class="gallery-item" data-label="The Garden"></div>
+      <div class="gallery-item" data-label="Friday Vibes"></div>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="visit">
+    <div class="visit-inner">
+      <div>
+        <h2>Come say <em>hello.</em></h2>
+        <p style="color:rgba(250,246,240,.7);font-size:16px;line-height:1.7;margin-bottom:8px">Walk-ins welcome. Reservations recommended for groups of 6+ on weekends.</p>
+      </div>
+      <div>
+        <div class="visit-detail">
+          <strong>Find Us</strong>
+          <span>43, 4th Block, Koramangala<br>Bangalore — 560034</span>
+        </div>
+        <div class="visit-detail">
+          <strong>Hours</strong>
+          <span>Tue–Sun: 8:00 AM – 9:00 PM<br>Monday: Closed</span>
+        </div>
+        <div class="visit-detail">
+          <strong>Reach Us</strong>
+          <span>+91 80 4321 0987<br>hello@brewandbloom.in</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">brew<em> & </em>bloom</a>
+        <p>Specialty coffee and brunch in the heart of Koramangala. Slow mornings, better coffee.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Visit</h5>
+        <ul>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#visit">Location</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Newsletter</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Catering</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Info</h5>
+        <ul>
+          <li><a href="#">Reservations</a></li>
+          <li><a href="#">Gift Cards</a></li>
+          <li><a href="#">Wholesale</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Brew & Bloom Coffee Co. All rights reserved.</div>
+      <div class="socials">
+        <a href="#">IG</a>
+        <a href="#">FB</a>
+        <a href="#">X</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('menuToggle').addEventListener('click',()=>{
+  document.getElementById('navMenu').classList.toggle('open');
+});
+document.querySelectorAll('.nav-menu a,.menu-tab').forEach(el=>{
+  el.addEventListener('click',e=>{
+    if(el.classList.contains('menu-tab')){
+      document.querySelectorAll('.menu-tab').forEach(t=>t.classList.remove('active'));
+      el.classList.add('active');
+    } else {
+      document.getElementById('navMenu').classList.remove('open');
+    }
+  });
+});
+</script>
+</body>
+</html>
